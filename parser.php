@@ -4,12 +4,12 @@ mysql_select_db("local_wiki_analytics",$db);
 $result = mysql_fetch_row(mysql_query("select size from file_attributes"));
 $oldSize = $result[0];
 //$oldTime = 1367496733;
-$newSize = filesize('/var/www/access.log');
+$newSize = filesize('/var/www/qaz/access.log');
 //echo $oldSize." = ".$newSize;die;
 //$newTime = filemtime('/var/www/access.log');
 //echo $newTime;
 if($newSize > $oldSize) {
-	$string = file_get_contents('/var/www/access.log', null, null, $oldSize, $newSize);
+	$string = file_get_contents('/var/www/qaz/access.log', null, null, $oldSize, $newSize);
 	parser($string);
 	$query = "update file_attributes set size = {$newSize} where id = 1";
 	mysql_query($query);
@@ -29,7 +29,8 @@ function parser($string) {
 		$items[$key] = "('{$resIp}', ";
 	}
 	foreach($result[2] as $key => $resDatetime){
-		$items[$key] .= "'{$resDatetime}', ";
+		$dateTime = strtotime($resDatetime);
+		$items[$key] .= "'{$dateTime}', ";
 	}
 	foreach($result[3] as $key => $resRequestLine){
 		$items[$key] .= "'{$resRequestLine}', ";

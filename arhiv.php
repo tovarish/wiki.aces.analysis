@@ -2,7 +2,7 @@
 include('./parser.php');
 $db=mysql_connect ("localhost","root","root");
 mysql_select_db("local_wiki_analytics",$db);
-foreach (glob("/var/www/access.log.*") as $file) {
+foreach (glob("/var/www/qaz/access.log.*") as $file) {
     openAccessLog($file);
     //echo "<br/>===================================<br/><br/>";
 }
