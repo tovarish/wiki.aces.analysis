@@ -24,7 +24,7 @@
 			<?php endforeach; ?>
 		</table>
 		*/ ?>
-		<div id = 'placeholder' style="width:800px;height:300px"></div>
+		<div id = 'placeholder' style="width:100%;height:300px"></div>
 	</body>
 	<script type="text/javascript">
 			
@@ -49,8 +49,8 @@
 		 },
 		 xaxis: {
 		   mode: "time",
-		   timeformat: "%b, %y",
-		   tickSize: [1, "month"]
+		   timeformat: "%d %b, %y",
+		   tickSize: [1, "day"]
 		 }
 		 
 		 

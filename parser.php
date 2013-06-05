@@ -26,6 +26,7 @@ function parser($string) {
 	$query = "insert into `access_log` (`client_IP`, `datatime`, `request_line`, `status_code`,`size_object_returned`, `referer`, `user_agent`) values ";
 
 	foreach($result[1] as $key => $resIp){
+		$resIp = addslashes($resIp);
 		$items[$key] = "('{$resIp}', ";
 	}
 	foreach($result[2] as $key => $resDatetime){
@@ -33,18 +34,23 @@ function parser($string) {
 		$items[$key] .= "'{$dateTime}', ";
 	}
 	foreach($result[3] as $key => $resRequestLine){
+		$resRequestLine = addslashes($resRequestLine);
 		$items[$key] .= "'{$resRequestLine}', ";
 	}
 	foreach($result[4] as $key => $resStatusCode){
+		$resStatusCode = addslashes($resStatusCode);
 		$items[$key] .= "'{$resStatusCode}', ";
 	}
 	foreach($result[5] as $key => $resSizeObjectReturned){
+		$resSizeObjectReturned = addslashes($resSizeObjectReturned);
 		$items[$key] .= "'{$resSizeObjectReturned}', ";
 	}
-	foreach($result[6] as $key => $resReferer){
+	foreach($result[6] as $key => $resReferer) {
+		$resReferer = addslashes($resReferer);
 		$items[$key] .= "'{$resReferer}', ";
 	}
 	foreach($result[7] as $key => $resUserAgent){
+		$resUserAgent = addslashes($resUserAgent);
 		$items[$key] .= "'{$resUserAgent}'),";
 	}
 	foreach($items as $item){
